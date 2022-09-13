@@ -39,7 +39,7 @@
     </div>
 </div>
 
-@livewireScripts
+
   <!-- plugins:js -->
   <script src="{{asset('admin/vendors/base/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
@@ -61,5 +61,7 @@
   <!-- End custom js for this page-->
 
   <script src="{{asset('admin/js/jquery.cookie.js')}}" type="text/javascript"></script>
+  @livewireScripts 
+  @stack('script')
 </body>
 </html>

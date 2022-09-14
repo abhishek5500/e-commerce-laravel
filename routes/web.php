@@ -32,6 +32,7 @@ Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(f
     Route::put('/category/{category}', 'update');
 
 });
+Route::get('/brands', App\Http\Livewire\Admin\Brand\Index::class);
 
     
    

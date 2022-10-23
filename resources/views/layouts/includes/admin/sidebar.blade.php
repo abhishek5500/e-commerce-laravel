@@ -1,21 +1,22 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{url('admin/dashboard')}}">
               <i class="mdi mdi-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title ">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-circle-outline menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
-              <i class="menu-arrow"></i>
+              <i class="mdi mdi-plus-circle menu-icon"></i>
+              <span class="menu-title">Products</span>
+              
+              
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/products/create')}}">Add Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/products')}}">View Products</a></li>
               </ul>
             </div>
           </li>
@@ -38,9 +39,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="{{url('admin/brands')}}">
               <i class="mdi mdi-emoticon menu-icon"></i>
-              <span class="menu-title">Icons</span>
+              <span class="menu-title">Brands</span>
             </a>
           </li>
           <li class="nav-item">

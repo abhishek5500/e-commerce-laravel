@@ -21,7 +21,7 @@
                             <th>Category</th>
                             <th>Product Name</th>
                             <th>Price</th>
-                            <th>Price</th>
+                            <th>Quantity</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr> 
@@ -29,8 +29,11 @@
                     <tbody>
                        
                         <tr>
+                            @php
+                            $i=1;
+                            @endphp
                             @forelse($products as $product)
-                            <td>{{$product->id}}</td>
+                            <td>{{$i++}}</td>
                             <!-- to fetch names code added in product model with function category  -->
                     
                             <td>

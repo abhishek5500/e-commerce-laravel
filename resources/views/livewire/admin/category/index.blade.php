@@ -45,8 +45,11 @@
                     <tbody>
                        
                         <tr>
+                            @php
+                            $i=0;
+                            @endphp
                             @foreach($categories as $category)
-                            <td>{{$category->id}}</td>
+                            <td>{{++$i}}</td>
                             <td>{{$category->name}}</td>
                             <td>{{$category->status == '1' ? 'Hiddenn': "Visible"}}</td>
                             <td>

@@ -55,11 +55,11 @@
                             </div>
                             <div class="mb-3">
                                 <label>  Product Name </label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control border border-dark mt-2">
                             </div>
                             <div class="mb-3">
                                 <label> Product Slug </label>
-                                <input type="text" name="slug" class="form-control">
+                                <input type="text" name="slug" class="form-control border border-dark mt-2">
                             </div>
                             <div class="mb-3">
                                 <label> Select Brand </label>
@@ -71,45 +71,46 @@
                             </div>
                             <div class="mb-3">
                                 <label> Small Description </label>
-                                <textarea name="small_description" rows="3" class="form-control"></textarea>
+                                <textarea name="small_description" rows="3" class="form-control border border-dark mt-2"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label> Description </label>
-                                <textarea name="description" rows="3" class="form-control"></textarea>
+                                <textarea name="description" rows="3" class="form-control border border-dark mt-2"></textarea>
                             </div>
                         </div>
                         <div class="tab-pane py-3 fade" id="seotag" role="tabpanel" aria-labelledby="seotag-tab">
                             <div class="mb-3">
                                 <label> Meta Title </label>
-                                <input type="text" name="meta_title" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label> Meta Title </label>
-                                <textarea name="meta_description" rows="3" class="form-control"></textarea>
+                                <input type="text" name="meta_title" class="form-control border border-dark mt-2">
                             </div>
                             <div class="mb-3">
                                 <label> Meta Keyword </label>
-                                <textarea name="meta_keyword" rows="3" class="form-control"></textarea>
+                                <textarea name="meta_keyword" rows="3" class="form-control border border-dark mt-2"></textarea>
                             </div>
+                            <div class="mb-3">
+                                <label> Meta description </label>
+                                <textarea name="meta_description" rows="3" class="form-control border border-dark mt-2"></textarea>
+                            </div>
+                           
                         </div>
                         <div class="tab-pane py-3 fade" id="details" role="tabpanel" aria-labelledby="details-tab">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Original Price </label>
-                                        <input type="text" name="original_price" class="form-control">
+                                        <input type="text" name="original_price" class="form-control border border-dark mt-2">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Selling Price </label>
-                                        <input type="text" name="selling_price" class="form-control">
+                                        <input type="text" name="selling_price" class="form-control border border-dark mt-2">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Quantity </label>
-                                        <input type="number" name="quantity" class="form-control">
+                                        <input type="number" name="quantity" class="form-control border border-dark mt-2">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -133,11 +134,11 @@
                         <div class="tab-pane py-3 fade" id="image" role="tabpanel" aria-labelledby="image-tab">
                             <div class="mb-3">
                                 <label for="">Upload Product Images</label>
-                                <input type="file" name="image[]" multiple class="form-control">
+                                <input type="file" name="image[]" multiple class="form-control border border-dark mt-2">
                             </div>
                         </div>
                     
-                            <button class="bt btn-primary">Submit</button>
+                            <button class="bt btn-success px-4 py-2">Submit</button>
                         </div>
                 </form>
             </div>

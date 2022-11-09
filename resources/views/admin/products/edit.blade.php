@@ -58,11 +58,11 @@
                             </div>
                             <div class="mb-3">
                                 <label> Product Name </label>
-                                <input type="text" name="name" value="{{$product->name}}" class="form-control">
+                                <input type="text" name="name" value="{{$product->name}}" class="form-control  border border-dark">
                             </div>
                             <div class="mb-3">
                                 <label> Product Slug </label>
-                                <input type="text" name="slug" value="{{$product->slug}}" class="form-control">
+                                <input type="text" name="slug" value="{{$product->slug}}" class="form-control  border border-dark">
                             </div>
                             <div class="mb-3">
                                 <label> Select Brand </label>
@@ -76,29 +76,29 @@
                             <div class="mb-3">
                                 <label> Small Description </label>
                                 <textarea name="small_description" rows="3"
-                                    class="form-control">{{$product->small_description}}</textarea>
+                                    class="form-control  border border-dark">{{$product->small_description}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label> Description </label>
                                 <textarea name="description" rows="3"
-                                    class="form-control">{{$product->description}}</textarea>
+                                    class="form-control  border border-dark">{{$product->description}}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane border py-3 my-3 fade" id="seotag" role="tabpanel" aria-labelledby="seotag-tab">
                             <div class="mb-3">
                                 <label> Meta Title </label>
                                 <input type="text" name="meta_title" value="{{$product->meta_title}}"
-                                    class="form-control">
+                                    class="form-control  border border-dark">
                             </div>
                             <div class="mb-3">
                                 <label> Meta Description </label>
                                 <textarea name="meta_description" rows="3"
-                                    class="form-control">{{$product->meta_description}}</textarea>
+                                    class="form-control  border border-dark">{{$product->meta_description}}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label> Meta Keyword </label>
                                 <textarea name="meta_keyword" rows="3"
-                                    class="form-control">{{$product->meta_keyword}}</textarea>
+                                    class="form-control  border border-dark">{{$product->meta_keyword}}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane border py-3 my-3 fade" id="details" role="tabpanel" aria-labelledby="details-tab">
@@ -107,34 +107,34 @@
                                     <div class="mb-3">
                                         <label> Original Price </label>
                                         <input type="text" name="original_price" value="{{$product->original_price}}"
-                                            class="form-control">
+                                            class="form-control  border border-dark">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Selling Price </label>
                                         <input type="text" name="selling_price" value="{{$product->selling_price}}"
-                                            class="form-control">
+                                            class="form-control  border border-dark">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Quantity </label>
                                         <input type="number" name="quantity" value="{{$product->quantity}}"
-                                            class="form-control">
+                                            class="form-control  border border-dark">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Trending </label>
-                                        <input type="checkbox" name="trending" class="form-control"
+                                        <input type="checkbox" name="trending" class="form-control  border border-dark"
                                             style="height:50px; width=50px" value="{{$product->trending}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Status </label>
-                                        <input type="checkbox" name="status" class="form-control"
+                                        <input type="checkbox" name="status" class="form-control  border border-dark"
                                             style="height:50px; width=50px" value="{{$product->status}}">
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                         <div class="tab-pane border py-3 my-3 fade" id="image" role="tabpanel" aria-labelledby="image-tab">
                             <div class="mb-3">
                                 <label for="">Upload Product Images</label>
-                                <input type="file" name="image[]" multiple class="form-control">
+                                <input type="file" name="image[]" multiple class="form-control  border border-dark">
                             </div>
                             <div>
                             @if($product->productImages)

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +57,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         
     
 });
+Route::get('students',[StudentController::class, 'index']);
+Route::post('students',[StudentController::class, 'store']);
+Route::get('/fetch-students',[StudentController::class, 'view']);

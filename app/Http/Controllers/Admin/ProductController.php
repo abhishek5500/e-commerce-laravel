@@ -5,6 +5,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Colors;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin/products/create', compact('categories','brands'));
+        $colors = Colors::all();
+        return view('admin/products/create', compact('categories','brands','colors'));
     }
     public function store(ProductFormRequest $request)
     {
@@ -63,6 +65,19 @@ class ProductController extends Controller
                     'image' => $finalImagePathName,
             ]);
         }
+        if ($request->colors) {
+          foreach ($request->colors as $key => $color) {
+            $product->productColors()->create([
+                'product_id'=>$product->id,
+                'color_id'=>$color,
+                'quantity'=>$request->colorquantity[$key] ?? 0,
+            ]);
+          }
+          }
+          else {
+            return redirect('/admin/products')->with('message', ' Successfully');
+          }
+
 
         return redirect('/admin/products')->with('message', 'Product Added Successfully');
     }

@@ -39,8 +39,12 @@
                                 type="button" role="tab" aria-controls="details" aria-selected="false">Details</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image"
+                            <button class="nav-link" id="colors-tab" data-bs-toggle="tab" data-bs-target="#image"
                                 type="button" role="tab" aria-controls="image" aria-selected="false">Image</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="product-color" data-bs-toggle="tab" data-bs-target="#colors"
+                                type="button" role="tab" aria-controls="colors" aria-selected="false">Colors</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -124,17 +128,35 @@
                                     <div class="mb-3">
                                         <label> Status </label>
                                         <input type="checkbox" name="status"
-                                            style="height:50px; width:50px" checked>
+                                            style="height:50px; width:50px" >
                                     </div>
                                 </div>
 
 
                             </div>
                         </div>
-                        <div class="tab-pane py-3 fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                        <div class="tab-pane py-3 fade" id="image" role="tabpanel" aria-labelledby="product-color">
                             <div class="mb-3">
-                                <label for="">Upload Product Images</label>
+                                <label for="">Upload Product image</label>
                                 <input type="file" name="image[]" multiple class="form-control border border-dark mt-2">
+                            </div>
+                        </div>
+                        <div class="tab-pane py-3 fade" id="colors" role="tabpanel" aria-labelledby="product-color">
+                            <div class="mb-3">
+                                <label for="">Select colors</label>
+                                <div class="row">
+                                    @foreach($colors as $color)
+                                    <div class="col-md-3" >
+                                        <div class="p-2 border mt-2" style="background-color: aliceblue;">
+                                        Color: <input type="checkbox" name="colors[{{$color->id}}]" value="{{$color->id}}" class="">{{$color->name}}
+                                        <br>
+                                        Quantity :  <input type="number" name="colorquantity[{{$color->id}}]" class="" style="width:60px">
+                                        </div>
+                                    
+                                    </div>
+                                    @endforeach
+                                </div>
+                               
                             </div>
                         </div>
                     

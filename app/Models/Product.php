@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\ProductColor;
 
 
 
@@ -29,10 +30,14 @@ class Product extends Model
     ];
     public function productImages()
     {
-            return $this->hasMany(productImage::class, 'product_id', 'id');
+            return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
     public function category()
     {
             return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+    public function productColors()
+    {
+            return $this->hasMany(ProductColor::class, 'product_id', 'id');
     }
 }

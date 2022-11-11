@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Colors extends Model
+class ProductColor extends Model
 {
     use HasFactory;
-    protected $table = 'colors';
+    protected $table = 'product_colors';
+
     protected $fillable = [
-        'name',
-        'code',
-     
-        'status'
+        'product_id',
+        'color_id',
+        'quantity'
+      
     ];
 }

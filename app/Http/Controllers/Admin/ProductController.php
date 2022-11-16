@@ -51,19 +51,20 @@ class ProductController extends Controller
         ]);
         if ($request->hasFile('image')) {
           $uploadPath = 'uploads/products/';
-        }
-        $i=1;
-        foreach($request->file('image') as $imageFile){
-            $extention = $imageFile->getClientOriginalExtension();
         
-            $filename= time().$i++.'.'.$extention;
-            $imageFile->move($uploadPath,$filename);
-            $finalImagePathName = $uploadPath.$filename;
-           
-            $product->productImages()->create([
-                    'product_id' => $product->id,
-                    'image' => $finalImagePathName,
-            ]);
+            $i=1;
+            foreach($request->file('image') as $imageFile){
+                $extention = $imageFile->getClientOriginalExtension();
+            
+                $filename= time().$i++.'.'.$extention;
+                $imageFile->move($uploadPath,$filename);
+                $finalImagePathName = $uploadPath.$filename;
+            
+                $product->productImages()->create([
+                        'product_id' => $product->id,
+                        'image' => $finalImagePathName,
+                ]);
+            }
         }
         if ($request->colors) {
           foreach ($request->colors as $key => $color) {
@@ -73,7 +74,7 @@ class ProductController extends Controller
                 'quantity'=>$request->colorquantity[$key] ?? 0,
             ]);
           }
-          }
+        }
           else {
             return redirect('/admin/products')->with('message', ' Successfully');
           }
@@ -86,7 +87,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $product = Product::findOrFail($product_id);
-        return view('admin.products.edit', compact('categories', 'brands', 'product'));
+        $product_color = $product->productColors->pluck('color_id')->toArray();
+        $colors = Colors::whereNotIn('id', $product_color)->get();
+        return view('admin.products.edit', compact('categories', 'brands', 'product','colors'));
     }
     public function update(ProductFormRequest $request, int $product_id )
     {
@@ -114,10 +117,37 @@ class ProductController extends Controller
                 'meta_description' => $validatedData['meta_description'],
             
             ]);
+            if ($request->hasFile('image')) {
+                $uploadPath = 'uploads/products/';
+              
+                  $i=1;
+                  foreach($request->file('image') as $imageFile){
+                      $extention = $imageFile->getClientOriginalExtension();
+                  
+                      $filename= time().$i++.'.'.$extention;
+                      $imageFile->move($uploadPath,$filename);
+                      $finalImagePathName = $uploadPath.$filename;
+                  
+                      $product->productImages()->create([
+                              'product_id' => $product->id,
+                              'image' => $finalImagePathName,
+                      ]);
+                  }
+              }
+              if ($request->colors) {
+                foreach ($request->colors as $key => $color) {
+                  $product->productColors()->create([
+                      'product_id'=>$product->id,
+                      'color_id'=>$color,
+                      'quantity'=>$request->colorquantity[$key] ?? 0,
+                  ]);
+                }
+              }
           
       
             return redirect('/admin/products')->with('message', 'Product Updated Successfully');
         }
+
         else {
             return redirect('admin/products')->with('message', 'No Such product Id was Found');
         }
@@ -136,5 +166,15 @@ class ProductController extends Controller
        }
        $productImage->delete();
        return redirect('/admin/products')->with('message', 'Image Removed Successfully');
+    }
+
+    public function updateProductColorQty(Request $request, $prod_color_id)
+    {
+        $productColorData = Product::findOrFail($request->product_id)
+                                ->productColors()->where('id', $prod_color_id)->first();
+        $productColorData->update([
+            'quantity' =>$request->qty
+        ]);
+        return response()->json(['message'=>'Product Color qty Updated']);
     }
 }

@@ -61,6 +61,9 @@
   <!-- End custom js for this page-->
 
   <script src="{{asset('admin/js/jquery.cookie.js')}}" type="text/javascript"></script>
+  @yield('scripts')
+
+  
   @livewireScripts 
   @stack('script')
 </body>

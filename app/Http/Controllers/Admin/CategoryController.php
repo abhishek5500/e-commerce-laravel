@@ -34,7 +34,8 @@ class CategoryController extends Controller
            $ext = $file->getClientOriginalExtension();
            $filename= time().'.'.$ext;
            $file->move('uploads/category/', $filename);
-           $category->image = $filename;
+           $uploadpath = 'uploads/category/';
+           $category->image = $uploadpath.$filename;
 
         }
         $category->meta_title = $validatedData['meta_title'];
@@ -70,7 +71,8 @@ class CategoryController extends Controller
            $ext = $file->getClientOriginalExtension();
            $filename= time().'.'.$ext;
            $file->move('uploads/category/', $filename);
-           $category->image = $filename;
+           $uploadpath = 'uploads/category/';
+           $category->image = $uploadpath.$filename;
 
         }
         $category->meta_title = $validatedData['meta_title'];

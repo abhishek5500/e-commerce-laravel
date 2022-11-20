@@ -18,7 +18,10 @@ use App\Http\Controllers\StudentController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
-
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}', 'products');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){

@@ -15,10 +15,19 @@
                     <div class="product-view">
                         <h4 class="product-name">
                             {{$product->name}}
-                            @if($product->quantity > 0)
-                            <label class="label-stock bg-success">In Stock</label>
+                            @if($product->productColors->count() > 0)
+                                @if($this->productColorSelectedQuantity == 'outofstock')
+                                <label class="label-stock  px-4 py-2 m-1 bg-danger">Out Of Stock</label>
+                                @elseif($this->productColorSelectedQuantity > 0)
+                                <label class="label-stock  px-4 py-2 m-1 bg-success">In Stock</label>
+                                @endif
+
                             @else
-                            <label class="label-stock bg-danger">Out Of Stock</label>
+                                @if($product->quantity > 0)
+                                <label class="label-stock  px-4 py-2 m-1 bg-success">In Stock</label>
+                                @else
+                                <label class="label-stock  px-4 py-2 m-1 bg-danger">Out Of Stock</label>
+                                @endif
                             @endif
                         </h4>
                         <hr>
@@ -32,7 +41,10 @@
                         <div>
                             @if($product->productColors)
                                 @foreach($product->productColors as $colorItem)
-                                    <input type="radio" name="colorSelection" value="{{$colorItem->id}}">&nbsp;&nbsp;{{$colorItem->color->name}}
+                                    <!-- <input type="radio" name="colorSelection" value="{{$colorItem->id}}">&nbsp;&nbsp;{{$colorItem->color->name}} -->
+                                    <label class="colorSelectionLabel" style="background:{{$colorItem->color->code}}" wire:click="colorSelected({{$colorItem->id}})">
+                                        {{$colorItem->color->name}}
+                                    </label>
                                 @endforeach
                             @endif
                         </div>

@@ -6,8 +6,16 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $product, $category;
+    public $product, $category, $productColorSelectedQuantity;
   
+    public function colorSelected($productColorId)
+    {
+        $productColor = $this->product->productColors()->where('id', $productColorId)->first();
+        $this->productColorSelectedQuantity = $productColor->quantity;
+        if ($this->productColorSelectedQuantity == 0) {
+            $this->productColorSelectedQuantity = "outofstock";
+        }
+    }
     public function mount($category, $product)
     {
        

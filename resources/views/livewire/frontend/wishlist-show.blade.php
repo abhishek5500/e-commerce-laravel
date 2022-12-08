@@ -32,7 +32,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-2 my-auto">
-                                    <label class="price">{{$wishlistItems->product->selling_price}}</label>
+                                    <label class="price">₹{{$wishlistItems->product->selling_price}}</label>
                                 </div>
                                 <div class="col-md-4 col-12 my-auto">
                                     <div class="remove">

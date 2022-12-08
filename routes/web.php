@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
 });
 Route::middleware(['auth'])->group(function(){
     Route::get('wishlist',[WishlistController::class, 'index']);
+    Route::get('cart',[CartController::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

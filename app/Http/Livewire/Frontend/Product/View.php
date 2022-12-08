@@ -25,7 +25,7 @@ class View extends Component
                     'user_id' => auth()->user()->id,
                     'product_id' => $productId
                 ]);
-                
+                $this->emit('wishlistAddedUpdated');
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Wishlist added successfully ):',
                     'type' => 'success',

@@ -24,7 +24,9 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
 });
-Route::get('wishlist',[WishlistController::class, 'index']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('wishlist',[WishlistController::class, 'index']);
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){

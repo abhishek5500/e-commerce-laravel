@@ -2,7 +2,7 @@
 
 @section('content')
     @section('title')
-    Cart
+    Checkout
     @endsection
-    <livewire:frontend.cart.cart-show />
+    <livewire:frontend.checkout.checkout-show />
 @endsection

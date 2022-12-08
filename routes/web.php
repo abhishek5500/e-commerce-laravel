@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +25,12 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
+    Route::get('thank-you', 'thankYou');
 });
 Route::middleware(['auth'])->group(function(){
     Route::get('wishlist',[WishlistController::class, 'index']);
     Route::get('cart',[CartController::class, 'index']);
+    Route::get('checkout',[CheckoutController::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

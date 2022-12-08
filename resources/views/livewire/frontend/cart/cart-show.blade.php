@@ -56,7 +56,12 @@
                                 </div>
                                 <div class="col-md-1 my-auto">
                                     <label class="price">₹{{$cartsItems->product->selling_price * $cartsItems->quantity}}</label>
+                                
+                                    @php $totalPrice += $cartsItems->product->selling_price * $cartsItems->quantity   @endphp
+
+                                  
                                 </div>
+                               
                                 <div class="col-md-2 col-5 my-auto">
                                     <div class="remove">
                                     <button type="button" wire:click="removeCartItem({{$cartsItems->id}})" class="btn btn-danger btn-sm">
@@ -72,6 +77,20 @@
                         @endforelse
                        
                                 
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-8 my-md-auto">
+                    <h3>Get the best Deals & Offers <a class="btn btn-primary" href="{{url('/collections')}}">Shop Now</a></h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="shadow-sm bg-white p-3">
+                        <h4>Total :
+                            <span class="float-end">₹{{$totalPrice}}</span>
+                        </h4>
+                        <hr>
+                        <a href="{{url('/checkout')}}" class="btn btn-success w-100">Checkout</a>
                     </div>
                 </div>
             </div>

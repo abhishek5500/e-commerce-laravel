@@ -8,6 +8,7 @@ use App\Models\Cart;
 
 class CartShow extends Component
 {
+    public  $totalPrice=0;
 
   
     public function incrementQuantity(int $cartinId)

@@ -36,12 +36,24 @@ class OrderController extends Controller
             return view('admin.orders.view', compact('order'));
         }
         else {
-            $this->dispatchBrowserEvent('message', [
-                'text' => ' Order Placed Successfully',
-                'type' => 'success',
-                'status' => 200
-            ]);
+         
             return redirect()->back();
         }
+    }
+    public function updateOrderStatus(int $orderId ,Request $request)
+    {
+        $order = Order::where('id', $orderId)->first();
+        if ($order) {
+            $order->update([
+                'status_message' => $request->order_status
+            ]);
+        
+            return redirect()->back()->with('message', 'Order Status Updated');
+        }
+        else {
+        
+            return redirect()->back()->with('message', 'Order Id Not Found');
+        }
+        
     }
 }

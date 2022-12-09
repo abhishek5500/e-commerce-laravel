@@ -63,7 +63,7 @@
                             <td>{{$orderItem->full_name}}</td>
                             <td>{{$orderItem->payment_mode}}</td>
                             <td>{{$orderItem->created_at->format('d-m-Y')}}</td>
-                            <td>{{$orderItem->status_message}}</td>
+                            <td class="text-uppercase">{{$orderItem->status_message}}</td>
                             <td>
                                 <a href="{{url('admin/orders/'.$orderItem->id)}}"class="btn btn-success">View Order</a>
                              

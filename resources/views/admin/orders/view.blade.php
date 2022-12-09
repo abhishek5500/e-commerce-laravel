@@ -1,6 +1,9 @@
 @extends('layouts.admin');
 
 @section('content')
+@if(session('message'))
+    <div class="alert alert-success mb-3">{{session('message')}}</div>
+@endif
 <div class="py-3 py-t-md-4">
     <div class="container">
         <div class="row">
@@ -8,8 +11,8 @@
             <div class="bg-white shadow p-3">
                 <h3 class="">
                     <i class="fa fa-shopping-cart text-dark"></i>My Orders Details
-                    <a href="{{url('orders')}}" class="btn btn-danger float-end">Back</a>
-                </h3>
+                    <a href="{{url('admin/orders')}}" class="btn btn-danger float-end ">Back</a>
+                </h3 class="mt-1">
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
@@ -98,6 +101,36 @@
                 </div>
             </div>
             </div>
+        </div>
+    </div>
+    <div class="card border mt-3">
+        <div class="card-body">
+            <h3>Order Process (Update Order Status)</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-5">
+                    <form action="{{url('admin/orders/'.$order->id)}}" method="post">
+                        @csrf
+                      
+                        <label class="m-2 p-2 fw-bold">Update  Order Status</label>
+                        <div class="input-groups">
+                            <select name="order_status" id="form-select" class="py-2 px-4 text-left">
+                                <option value="" disabled>Select  Status</option>
+                                <option value="in progress" {{Request::get('status') == 'in progress' ? 'selected':''}} >In Progress</option>
+                                <option value="completed" {{Request::get('status') == 'completed' ? 'selected':''}} >Completed</option>
+                                <option value="pending" {{Request::get('status') == 'pending' ? 'selected':''}} >Pending</option>
+                                <option value="cancelled" {{Request::get('status') == 'cancelled' ? 'selected':''}} >Cancelled</option>
+                                <option value="out for delivery" {{Request::get('status') == 'out for delivery' ? 'selected':''}} >Out for Delivery</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary text-white">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7">
+                    <h3 class="mt-3">Currrent Order Status : <span class="text-uppercase">{{$order->status_message}}</span></h3>
+                </div>
+            </div>
+           
         </div>
     </div>
 </div>

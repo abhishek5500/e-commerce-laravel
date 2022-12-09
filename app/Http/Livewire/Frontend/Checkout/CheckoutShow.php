@@ -12,6 +12,37 @@ class CheckoutShow extends Component
     public $carts, $totalProductAmount=0;
     public $fullname, $email, $phone, $pincode, $address, $payment_mode = NULL, $payment_id = NULL;
 
+    protected $listeners = [
+        'ValidationForAll',
+        'transactionEmit' => 'paidOnlineOrder'
+    ];
+    public function paidOnlineOrder($value)
+    {
+        $this->payment_id = $value;
+        $this->payment_mode = 'ONLINE';
+        $codOrder = $this->placeOrder();
+        if ($codOrder) {
+            Cart::where('user_id', auth()->user()->id)->delete();
+            $this->emit('cartAddedUpdated');
+            $this->dispatchBrowserEvent('message', [
+                'text' => ' Order Placed Successfully',
+                'type' => 'success',
+                'status' => 200
+            ]);
+            return redirect()->to('thank-you');
+        }
+        else {
+            $this->dispatchBrowserEvent('message', [
+                'text' => 'Something went wrong !',
+                'type' => 'error',
+                'status' => 404
+            ]);
+        }
+    }
+    public function ValidationForAll()
+    {
+        $this->validate();
+    }
     public function rules()
     {
         return [
@@ -25,9 +56,11 @@ class CheckoutShow extends Component
     public function placeOrder()
     {
         $this->validate();
+     
+        
         $order = Order::create([
             'user_id' => auth()->user()->id ,
-            'tracking_no' => 'ABHI'.Str::random(5),
+            'tracking_no' => strtoupper('ABHI'.Str::random(5)),
             'full_name' => $this->fullname,
             'email' => $this->email,
             'phone' =>$this->phone ,

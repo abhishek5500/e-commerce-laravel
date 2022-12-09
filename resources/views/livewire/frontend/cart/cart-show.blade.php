@@ -31,7 +31,11 @@
                                 <div class="col-md-6 my-auto">
                                     <a href="{{url('collections/'.$cartsItems->product->category->slug.'/'.$cartsItems->product->slug)}}">
                                         <label class="product-name">
-                                            <img src="{{asset($cartsItems->product->productImages[0]->image)}}" style="width: 50px; height: 50px" alt="">
+                                            @if($cartsItems->product->productImages)
+                                                <img src="{{asset($cartsItems->product->productImages[0]->image)}}" style="width: 50px; height: 50px" alt="">
+                                            @else
+                                                <img src="" alt="">
+                                            @endif
                                             {{$cartsItems->product->name}}
                                          
                                             @if($cartsItems->productColors)

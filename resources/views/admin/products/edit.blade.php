@@ -135,15 +135,15 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Trending </label>
-                                        <input type="checkbox" name="trending" class="form-control  border border-dark"
-                                            style="height:50px; width=50px" value="{{$product->trending}}">
+                                        <input {{$product->trending == '1' ? 'Checked':''}} type="checkbox" name="trending" 
+                                            style="height:50px; width=50px" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Status </label>
-                                        <input type="checkbox" name="status" class="form-control  border border-dark"
-                                            style="height:50px; width=50px" value="{{$product->status}}">
+                                        <input type="checkbox" name="status" 
+                                            style="height:50px; width=50px" {{$product->status  == '1' ? 'Checked':''}}>
                                     </div>
                                 </div>
 

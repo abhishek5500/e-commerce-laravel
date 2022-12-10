@@ -91,7 +91,7 @@
                             <a class="nav-link" href="{{url('/new-arrival')}}">New Arrivals</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/')}}">Featured Products</a>
+                            <a class="nav-link" href="{{url('/featured')}}">Featured Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/')}}">Electronics</a>

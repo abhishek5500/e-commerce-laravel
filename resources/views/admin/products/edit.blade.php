@@ -135,17 +135,24 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Trending </label>
-                                        <input {{$product->trending == '1' ? 'Checked':''}} type="checkbox" name="trending" 
-                                            style="height:50px; width=50px" >
+                                        <input  type="checkbox" name="trending" 
+                                            style="height:50px; width=50px" {{$product->trending == '1' ? 'Checked':''}}>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label> Faetured </label>
+                                        <input type="checkbox" name="featured" 
+                                            style="height:50px; width=50px"  {{$product->featured == '1' ? 'Checked':''}}>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label> Status </label>
-                                        <input type="checkbox" name="status" 
-                                            style="height:50px; width=50px" {{$product->status  == '1' ? 'Checked':''}}>
+                                        <input type="checkbox" name="status" style="height:50px; width=50px"  {{$product->status == '1' ? 'Checked':''}} >
                                     </div>
                                 </div>
+                                
 
 
                             </div>

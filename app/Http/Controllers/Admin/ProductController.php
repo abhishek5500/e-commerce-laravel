@@ -43,6 +43,7 @@ class ProductController extends Controller
         'selling_price' => $validatedData['selling_price'],
         'quantity' => $validatedData['quantity'],
             'trending' => $request->trending == true ? '1':'0',
+            'featured' => $request->featured == true ? '1':'0',
             
             'status' => $request->status == true ? '1':'0',
             'meta_title' => $validatedData['meta_title'],
@@ -66,15 +67,15 @@ class ProductController extends Controller
                 ]);
             }
         }
-        if ($request->colors) {
-          foreach ($request->colors as $key => $color) {
-            $product->productColors()->create([
-                'product_id'=>$product->id,
-                'color_id'=>$color,
-                'quantity'=>$request->colorquantity[$key] ?? 0,
-            ]);
-          }
-        }
+            if ($request->colors) {
+            foreach ($request->colors as $key => $color) {
+                $product->productColors()->create([
+                    'product_id'=>$product->id,
+                    'color_id'=>$color,
+                    'quantity'=>$request->colorquantity[$key] ?? 0,
+                ]);
+            }
+            }
           else {
             return redirect('/admin/products')->with('message', ' Successfully');
           }
@@ -106,10 +107,11 @@ class ProductController extends Controller
                 'small_description' => $validatedData['small_description'],
                 'description' => $validatedData['description'],
                 'brand' => $validatedData['brand'],
-            'original_price' => $validatedData['original_price'],
-            'selling_price' => $validatedData['selling_price'],
-            'quantity' => $validatedData['quantity'],
+                'original_price' => $validatedData['original_price'],
+                'selling_price' => $validatedData['selling_price'],
+                'quantity' => $validatedData['quantity'],
                 'trending' => $request->trending == true ? '1':'0',
+                'featured' => $request->featured == true ? '1':'0',
                 
                 'status' => $request->status == true ? '1':'0',
                 'meta_title' => $validatedData['meta_title'],

@@ -30,6 +30,7 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
     Route::get('thank-you', 'thankYou');
     Route::get('new-arrival', 'newArrival');
+    Route::get('featured', 'featuredProd');
 });
 Route::middleware(['auth'])->group(function(){
     Route::get('wishlist',[WishlistController::class, 'index']);

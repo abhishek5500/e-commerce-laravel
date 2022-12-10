@@ -25,8 +25,10 @@ return new class extends Migration
             $table->integer('original_price');
             $table->integer('selling_price');
             $table->integer('quantity');
-            $table->tinyInteger('trending')->default('0')->comment('0=Not-Trending,1=Rending');
+            $table->tinyInteger('trending')->default('0')->comment('0=Not-Trending,1=Trending');
+            $table->tinyInteger('featured')->default('0')->comment('0=Not-Featured,1=Normal');
             $table->tinyInteger('status')->default('0')->comment('0=visible,1=hidden');
+            
 
           
             $table->string('meta_title')->nullable();

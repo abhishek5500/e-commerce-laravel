@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Wishlist;
+use App\Models\Product;
 use App\Models\Category;
 
 class FrontendController extends Controller
@@ -13,8 +14,8 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = Slider::all();
-        $wishlists = Wishlist::all();
-        return view('frontend.index',compact('sliders', 'wishlists'));
+        $trendingProducts = Product::where('trending', '1')->latest()->take(15)->get();
+        return view('frontend.index',compact('sliders', 'trendingProducts'));
     }
     public function categories()
     {
@@ -25,7 +26,7 @@ class FrontendController extends Controller
     {
         $category = Category::where('slug', $category_slug)->first();
         if ($category) {
-            // $products = $category->products()->get();
+           
             return view('frontend.product.index',compact('category'));
         }
         else {

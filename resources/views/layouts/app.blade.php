@@ -18,6 +18,9 @@
     <!-- styles  -->
     <link rel="stylesheet" href="{{asset('assets\css\bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets\css\custom.css')}}">
+    <link rel="stylesheet" href="{{asset('assets\css\owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets\exzoom\jquery.exzoom.css')}}">
+    <link rel="stylesheet" href="{{asset('assets\css\owl.theme.default.min.css')}}">
     <!-- Scripts -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- CSS -->
@@ -90,6 +93,9 @@
     </div>
     <script src="{{asset('assets\js\bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets\js\jquery-3.6.1.min.js')}}"></script>
+    <script src="{{asset('assets\js\owl.carousel.min.js')}}"></script>
+    <!-- exzoom  -->
+    <script src="{{asset('assets\exzoom\jquery.exzoom.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <script>
         window.addEventListener('message', event => {

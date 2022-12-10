@@ -125,6 +125,16 @@
     /* margin: 8px; */
     font-size: 12px;
 }
+.product-card .stock-arr-trnd{
+    position: absolute;
+    color: #fff;
+    /* border-radius: 4px; */
+    padding: 2px 12px;
+    /* margin: 8px; */
+    font-size: 12px;
+    top: 0;
+    left: 0;
+}
 .product-card .product-card-img{
     max-height: 260px;
     overflow: hidden;

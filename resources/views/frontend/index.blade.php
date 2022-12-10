@@ -74,7 +74,7 @@ Home
                   <div class="product-card">
                           <div class="product-card-img">
 
-                              <label class="stock bg-success">New</label>
+                              <label class="stock-arr-trnd bg-success">New</label>
 
 
 

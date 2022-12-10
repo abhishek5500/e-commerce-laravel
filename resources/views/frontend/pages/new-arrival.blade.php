@@ -8,13 +8,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
+                @if($newProductsArrival)
                 <h4>New Arrivals</h4>
                     <div class="underline mx-auto  mb-4"></div>
                 <div class=" owl-carousel owl-theme trending-products">
-                    @forelse($newProductsArrival as $productItem)
-    
+                    @foreach($newProductsArrival as $productItem)
+
                     <div class="item">
-                    <div class="product-card">
+                        <div class="product-card">
                             <div class="product-card-img">
 
                                 <label class="stock-arr-trnd bg-success">New</label>
@@ -41,13 +42,13 @@
                             </div>
                         </div>
                     </div>
-                
-                    @empty
+                    @endforeach
+                   @else
                     </div>
                     <div class="col-md-12">
                         <h4 class="p-2"> No Trending Products</h4>
                     </div>
-                    @endforelse
+                  @endif
                 </div>
                 <div class="text-center">
                     <a href="{{url('/collections')}}" class="btn btn-warning">View More</a>
@@ -74,6 +75,5 @@
             }
         }
     })
-
 </script>
 @endsection

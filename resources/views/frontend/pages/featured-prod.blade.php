@@ -45,7 +45,7 @@
                     @empty
                     </div>
                     <div class="col-md-12">
-                        <h4 class="p-2"> No Trending Products</h4>
+                        <h4 class="p-2"> No Featured Products</h4>
                     </div>
                     @endforelse
                 </div>

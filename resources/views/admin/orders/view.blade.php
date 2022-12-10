@@ -11,8 +11,11 @@
             <div class="bg-white shadow p-3">
                 <h3 class="">
                     <i class="fa fa-shopping-cart text-dark"></i>My Orders Details
-                    <a href="{{url('admin/orders')}}" class="btn btn-danger float-end ">Back</a>
+                    <a href="{{url('admin/orders')}}" class="btn btn-danger float-end mx-3">Back</a>
+                    <a href="{{url('admin/invoice/'.$order->id.'/generate')}}" class="btn btn-primary float-end mx-3">Download Invoice</a>
+                    <a href="{{url('admin/invoice/'.$order->id)}}" target="_blank" class="btn btn-success float-end mx-3">View Invoice</a>
                 </h3 class="mt-1">
+                <br>
                 <hr>
                 <div class="row">
                     <div class="col-md-6">

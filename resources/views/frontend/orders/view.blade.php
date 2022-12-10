@@ -12,6 +12,8 @@
                 <h4 class="">
                     <i class="fa fa-shopping-cart text-dark"></i>My Orders Details
                     <a href="{{url('orders')}}" class="btn btn-danger float-end">Back</a>
+                    <a href="{{url('orders/invoice/'.$order->id.'/generate')}}" class="btn btn-primary float-end mx-3">Download Invoice</a>
+                    <a href="{{url('orders/invoice/'.$order->id)}}" target="_blank" class="btn btn-success float-end mx-3">View Invoice</a>
                 </h4>
                 <hr>
                 <div class="row">

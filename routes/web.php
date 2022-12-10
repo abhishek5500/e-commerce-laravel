@@ -34,6 +34,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('checkout',[CheckoutController::class, 'index']);
     Route::get('orders',[OrderController::class, 'index']);
     Route::get('orders/{orderId}',[OrderController::class, 'show']);
+    Route::get('orders/invoice/{orderId}',[OrderController::class, 'viewInvoice']);
+    Route::get('orders/invoice/{orderId}/generate',[OrderController::class, 'generateInvoice']);
+
+  
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -85,6 +90,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::get('/orders', 'index');
         Route::get('orders/{orderId}', 'show');
         Route::post('orders/{orderId}', 'updateOrderStatus');
+        Route::get('invoice/{orderId}', 'viewInvoice');
+        Route::get('invoice/{orderId}/generate', 'generateInvoice');
+     
       
         
     

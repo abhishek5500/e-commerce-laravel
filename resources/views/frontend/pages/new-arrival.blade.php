@@ -11,14 +11,14 @@
                 @if($newProductsArrival)
                 <h4>New Arrivals</h4>
                     <div class="underline mx-auto  mb-4"></div>
-                <div class=" owl-carousel owl-theme new-arrival-prod">
+               <div class="row">
                     @foreach($newProductsArrival as $productItem)
 
-                    <div class="item">
+                    <div class="item col-md-3">
                         <div class="product-card">
                             <div class="product-card-img">
 
-                                <label class="stock-arr-trnd bg-success">New</label>
+                                <label class="stock bg-success">New</label>
 
 
 
@@ -43,13 +43,14 @@
                         </div>
                     </div>
                     @endforeach
+                    </div>
                    @else
                     </div>
                     <div class="col-md-12">
                         <h4 class="p-2"> No Trending Products</h4>
                     </div>
                   @endif
-                </div>
+              
                 <div class="text-center">
                     <a href="{{url('/collections')}}" class="btn btn-warning">View More</a>
                 </div>

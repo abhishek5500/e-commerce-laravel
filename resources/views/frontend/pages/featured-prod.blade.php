@@ -10,14 +10,14 @@
                 <div class="col-md-12 text-center">
                 <h4>Featured Products</h4>
                     <div class="underline mx-auto  mb-4"></div>
-                <div class=" owl-carousel owl-theme featured-products">
+                <div class="row">
                     @forelse($featuredProducts as $productItem)
     
-                    <div class="item">
+                    <div class="item col-md-3">
                     <div class="product-card">
                             <div class="product-card-img">
 
-                                <label class="stock-arr-trnd bg-success">New</label>
+                                <label class="stock bg-success">New</label>
 
 
 

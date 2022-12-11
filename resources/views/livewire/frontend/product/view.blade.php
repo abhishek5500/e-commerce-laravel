@@ -24,7 +24,7 @@
                             <div class="exzoom_nav"></div>
                             <p class="exzoom_btn">
                                 <a href="javascript:void(0);" class="exzoom_prev_btn">
-                                    </a> <a href="javascript:void(0);" class="exzoom_next_btn"> 
+                                </a> <a href="javascript:void(0);" class="exzoom_next_btn">
                                 </a>
                             </p>
                         </div>
@@ -121,6 +121,119 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Related
+                    @if($category) {{$category->name}} @endif
+                    Products</h4>
+                <div class="underline mx-auto  mb-4"></div>
+                <div class="row">
+                    @forelse($category->relatedProducts as $relatedProductItem)
+
+                    <div class="item col-md-3">
+                        <div class="product-card">
+                            <div class="product-card-img">
+
+                                <label class="stock bg-success">New</label>
+
+
+
+                                <a
+                                    href="{{url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug)}}">
+                                    <img class="p-2" src="{{asset($relatedProductItem->productImages[0]->image)}}"
+                                        alt="{{$relatedProductItem->name}}">
+                                </a>
+                            </div>
+                            <div class="product-card-body">
+                                <p class="product-brand">{{$relatedProductItem->brand}}</p>
+                                <h5 class="product-name">
+                                    <a
+                                        href="{{url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug)}}">
+                                        {{$relatedProductItem->name}}
+                                    </a>
+                                </h5>
+                                <div>
+                                    <span class="selling-price">₹{{$relatedProductItem->selling_price}}</span>
+                                    <span class="original-price">₹{{$relatedProductItem->original_price}}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @empty
+                </div>
+                <div class="col-md-12">
+                    <h4 class="p-2"> No Featured Products</h4>
+                </div>
+                @endforelse
+            </div>
+            <div class="text-center">
+                <a href="{{url('/collections')}}" class="btn btn-warning">View More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-5 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Related
+                    @if($product) {{$product->brand}} @endif
+                    Products
+                </h4>
+                <div class="underline mx-auto  mb-4"></div>
+                <div class="row">
+                    @forelse($category->relatedProducts as $relatedProductItem)
+                    @if($relatedProductItem->brand == "$product->brand")
+                    <div class="item col-md-3">
+                        <div class="product-card">
+                            <div class="product-card-img">
+
+                                <label class="stock bg-success">New</label>
+
+
+
+                                <a
+                                    href="{{url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug)}}">
+                                    <img class="p-2" src="{{asset($relatedProductItem->productImages[0]->image)}}"
+                                        alt="{{$relatedProductItem->name}}">
+                                </a>
+                            </div>
+                            <div class="product-card-body">
+                                <p class="product-brand">{{$relatedProductItem->brand}}</p>
+                                <h5 class="product-name">
+                                    <a
+                                        href="{{url('/collections/'.$relatedProductItem->category->slug.'/'.$relatedProductItem->slug)}}">
+                                        {{$relatedProductItem->name}}
+                                    </a>
+                                </h5>
+                                <div>
+                                    <span class="selling-price">₹{{$relatedProductItem->selling_price}}</span>
+                                    <span class="original-price">₹{{$relatedProductItem->original_price}}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @empty
+                </div>
+                <div class="col-md-12">
+                    <h4 class="p-2"> No Featured Products</h4>
+                </div>
+                @endforelse
+            </div>
+            <div class="text-center">
+                <a href="{{url('/collections')}}" class="btn btn-warning">View More</a>
             </div>
         </div>
     </div>

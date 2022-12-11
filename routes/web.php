@@ -21,16 +21,18 @@ use App\Http\Controllers\Frontend\OrderController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+
 
 
 Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+    Route::get('/', 'index');
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
     Route::get('thank-you', 'thankYou');
     Route::get('new-arrival', 'newArrival');
     Route::get('featured', 'featuredProd');
+    Route::get('search', 'searchProducts');
 });
 Route::middleware(['auth'])->group(function(){
     Route::get('wishlist',[WishlistController::class, 'index']);

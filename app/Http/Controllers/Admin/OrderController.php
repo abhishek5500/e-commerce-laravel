@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Order;
+use App\Mail\InvoiceOrderMailable;
 
 class OrderController extends Controller
 {
@@ -21,7 +23,7 @@ class OrderController extends Controller
             return $q->whereDate('created_at', $request->date);
         }, function ($q) use ($todayDate)
         {
-            return $q;
+            return $q->latest();
         })
         ->when($request->status != NULL , function ($q) use ($request){
             return $q->where('status_message', $request->status);
@@ -70,6 +72,19 @@ class OrderController extends Controller
         $data = ['order' => $order];
         $pdf = Pdf::loadView('admin.invoice.viewinvoice', $data);
         return $pdf->download('invoice-'.$order->id.'-'.$todayDate.'.pdf');
+        
+    }
+    public function mailInvoice(int $orderId)
+    {
+      try {
+        $order = Order::findOrFail($orderId);
+        Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
+        return redirect('admin/orders/'.$orderId)->with('message', 'Invoice sent to mail '.$order->email.'Successfiylly');
+      } catch (\Throwable $th) {
+        return redirect('admin/orders/'.$orderId)->with('message', 'Invoice not sent');
+      }
+        
+       
         
     }
 }

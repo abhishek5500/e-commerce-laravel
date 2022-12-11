@@ -100,6 +100,14 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::controller(App\Http\Controllers\Admin\SettingController::class)->group(function () {
         Route::get('/settings', 'index');
     });
+    Route::controller(App\Http\Controllers\Admin\UserController::class)->group(function () {
+        Route::get('users', 'index');
+        Route::post('users', 'store');
+        Route::get('users/create', 'create');
+        Route::get('users/{user_id}/edit', 'edit');
+        Route::get('users/{user_id}/delete', 'delete');
+        Route::put('users/{user_id}', 'update');
+    });
         
     
 });

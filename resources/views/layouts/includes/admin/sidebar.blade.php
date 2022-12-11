@@ -25,12 +25,6 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('admin/category/create')}}">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Add Category</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="mdi mdi-chart-pie menu-icon"></i>
               <span class="menu-title">Charts</span>
@@ -40,6 +34,12 @@
             <a class="nav-link" href="pages/tables/basic-table.html">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Tables</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/category')}}">
+              <i class="mdi mdi-emoticon menu-icon"></i>
+              <span class="menu-title">Category</span>
             </a>
           </li>
           <li class="nav-item">

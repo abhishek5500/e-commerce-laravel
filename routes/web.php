@@ -96,10 +96,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::post('orders/{orderId}', 'updateOrderStatus');
         Route::get('invoice/{orderId}', 'viewInvoice');
         Route::get('invoice/{orderId}/generate', 'generateInvoice');
-     
-      
-        
-    
+    });
+    Route::controller(App\Http\Controllers\Admin\SettingController::class)->group(function () {
+        Route::get('/settings', 'index');
     });
         
     

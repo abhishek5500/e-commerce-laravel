@@ -2,7 +2,7 @@
 
 @section('content')
 @section('title')
-New Arrival
+Search Products
 @endsection
 <div class="py-5 bg-white">
     <div class="container">

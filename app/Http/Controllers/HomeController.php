@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
-use App\Models\Wishlist;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -26,7 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::all();
-        $wishlists = Wishlist::all();
-        return view('frontend.index',compact('sliders', 'wishlists'));
+        $trendingProducts = Product::where('trending', '1')->latest()->take(16)->get();
+        $featuredProducts = Product::where('featured', '1')->latest()->take(2)->get();
+        $newProductsArrival = Product::latest()->take(16)->get();
+        return view('frontend.index',compact('sliders', 'trendingProducts', 'featuredProducts', 'newProductsArrival'));
     }
 }

@@ -33,7 +33,9 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('new-arrival', 'newArrival');
     Route::get('featured', 'featuredProd');
     Route::get('search', 'searchProducts');
+   
 });
+
 Route::middleware(['auth'])->group(function(){
     Route::get('wishlist',[WishlistController::class, 'index']);
     Route::get('cart',[CartController::class, 'index']);
@@ -43,7 +45,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('orders/invoice/{orderId}',[OrderController::class, 'viewInvoice']);
     Route::get('orders/invoice/{orderId}/generate',[OrderController::class, 'generateInvoice']);
 
-  
+    Route::controller(App\Http\Controllers\Frontend\UserController::class)->group(function () {
+        Route::get('user-profile', 'userprofile');
+        Route::post('user-profile', 'store');
+        Route::get('change-password', 'passwordcreate');
+        Route::post('change-password', 'changepass');
+    
+    });
 
 });
 

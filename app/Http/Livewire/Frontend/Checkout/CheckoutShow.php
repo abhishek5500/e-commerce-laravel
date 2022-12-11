@@ -5,8 +5,10 @@ namespace App\Http\Livewire\Frontend\Checkout;
 use Livewire\Component;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Orderitem;
 use Illuminate\Support\Str;
+use App\Mail\PlaceOrderMailable;
 class CheckoutShow extends Component
 {
     public $carts, $totalProductAmount=0;
@@ -23,6 +25,13 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if ($codOrder) {
             Cart::where('user_id', auth()->user()->id)->delete();
+            try {
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+              
+              } catch (\Throwable $th) {
+                // mail not sent 
+              }
             $this->emit('cartAddedUpdated');
             $this->dispatchBrowserEvent('message', [
                 'text' => ' Order Placed Successfully',
@@ -95,6 +104,14 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if ($codOrder) {
             Cart::where('user_id', auth()->user()->id)->delete();
+            try {
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+              
+              } catch (\Throwable $th) {
+                // mail not sent 
+              }
+
             $this->emit('cartAddedUpdated');
             $this->dispatchBrowserEvent('message', [
                 'text' => ' Order Placed Successfully',
@@ -126,6 +143,11 @@ class CheckoutShow extends Component
         
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+        $this->phone = auth()->user()->userDetails->phone;
+        $this->pincode = auth()->user()->userDetails->pincode;
+        $this->address = auth()->user()->userDetails->address;
+
+
         $this->totalProductAmount = $this->totalProductAmount();
 
         return view('livewire.frontend.checkout.checkout-show',[

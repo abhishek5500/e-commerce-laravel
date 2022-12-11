@@ -21,7 +21,7 @@ class OrderController extends Controller
             return $q->whereDate('created_at', $request->date);
         }, function ($q) use ($todayDate)
         {
-            return $q->whereDate('created_at', $todayDate);
+            return $q;
         })
         ->when($request->status != NULL , function ($q) use ($request){
             return $q->where('status_message', $request->status);

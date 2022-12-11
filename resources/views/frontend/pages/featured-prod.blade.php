@@ -10,7 +10,7 @@
                 <div class="col-md-12 text-center">
                 <h4>Featured Products</h4>
                     <div class="underline mx-auto  mb-4"></div>
-                <div class=" owl-carousel owl-theme trending-products">
+                <div class=" owl-carousel owl-theme featured-products">
                     @forelse($featuredProducts as $productItem)
     
                     <div class="item">
@@ -58,7 +58,7 @@
 @endsection
 @section('scripts')
 <script>
-    $('.trending-products').owlCarousel({
+    $('.featured-products').owlCarousel({
         loop: true,
         margin: 10,
         nav: true,

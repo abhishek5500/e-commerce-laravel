@@ -11,7 +11,7 @@
                 @if($newProductsArrival)
                 <h4>New Arrivals</h4>
                     <div class="underline mx-auto  mb-4"></div>
-                <div class=" owl-carousel owl-theme trending-products">
+                <div class=" owl-carousel owl-theme new-arrival-prod">
                     @foreach($newProductsArrival as $productItem)
 
                     <div class="item">
@@ -59,7 +59,7 @@
 @endsection
 @section('scripts')
 <script>
-    $('.trending-products').owlCarousel({
+    $('.new-arrival-prod').owlCarousel({
         loop: true,
         margin: 10,
         nav: true,
